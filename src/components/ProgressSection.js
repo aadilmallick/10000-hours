@@ -1,18 +1,38 @@
-// const url = "https://hours-896df-default-rtdb.firebaseio.com/";
+import { AddModal } from "./Utilities";
+import { useState } from "react";
+
+const url = "https://hours-896df-default-rtdb.firebaseio.com/";
+
+const addCardHandler = (title, currentHours, goalHours) => {
+  fetch(`${url}.json`, {
+    method: "POST",
+    body: JSON.stringify({ title, currentHours, goalHours }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
 const ProgressSection = () => {
-  const cards = [
-    { title: "Spanish", currentHours: 450, goalHours: 700, id: 1 },
-    { title: "Spanish", currentHours: 450, goalHours: 700, id: 1 },
-  ];
+  // const cards = [
+  //   { title: "Spanish", currentHours: 450, goalHours: 700, id: 1 },
+  //   { title: "Spanish", currentHours: 450, goalHours: 700, id: 1 },
+  // ];
+
+  const cards = [];
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   let isempty = cards.length === 0;
   return (
     <section id="home-a">
+      <AddModal
+        isOpen={modalIsOpen}
+        onCloseModal={() => setModalIsOpen(false)}
+      />
       <div className="container">
         <h2 className="section-title">My Journies</h2>
         <div className="divider"></div>
         {isempty ? (
-          <Empty />
+          <Empty onAdd={() => setModalIsOpen(true)} />
         ) : (
           cards.map((card) => (
             <ProgressCard
@@ -28,11 +48,13 @@ const ProgressSection = () => {
   );
 };
 
-const Empty = () => {
+const Empty = ({ onAdd }) => {
   return (
     <div className="empty">
       <h3>Add a journey to get started!</h3>
-      <button className="btn btn-primary">Add journey</button>
+      <button className="btn btn-primary" onClick={onAdd}>
+        Add journey
+      </button>
     </div>
   );
 };

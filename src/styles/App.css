@@ -109,9 +109,11 @@ img {
   height: 100vh;
   color: white;
   overflow: hidden;
+  position: relative;
 }
 #header-home .spacer {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
   opacity: 0.9;
@@ -211,4 +213,24 @@ img {
 }
 #home-a .card .buttons button {
   margin: 0 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5f5f5;
+  padding: 3rem;
+  z-index: 1000;
+  border-radius: 12px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.6);
 }/*# sourceMappingURL=App.css.map */
