@@ -1,0 +1,152 @@
+@import "Config";
+@import "utilities";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+  font-family: "Roboto", sans-serif;
+  /* weights: regular */
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+#header-home {
+  background: $overlay-light, $bg-image no-repeat center right / cover;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+  .spacer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0.9;
+  }
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15%;
+
+    h1 {
+      font-size: 8rem;
+      line-height: 0.8;
+    }
+    h2 {
+      font-size: 4rem;
+      color: $primary-color;
+    }
+  }
+}
+
+#main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    padding: 1rem 1.5rem;
+  }
+
+  // we make border transparent so that we only transition color. This keeps same thing in place.
+  .navlink {
+    text-transform: uppercase;
+    color: white;
+    border-bottom: 3px transparent solid;
+    transition: border-bottom 0.5s;
+    &:hover {
+      border-bottom: 3px solid white;
+    }
+
+    &.current {
+      border-color: $primary-color;
+    }
+  }
+}
+
+#home-a {
+  @include py(5);
+
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $light-color;
+    width: 50%;
+    margin: 0 auto;
+    @include padding(3);
+    border-radius: $rounded;
+    button {
+      margin-top: 1rem;
+    }
+  }
+
+  .card {
+    background-color: $light-color;
+    padding: 2rem;
+    @include my(2);
+    border-radius: 5px;
+    transition: box-shadow 1s;
+    &:hover {
+      box-shadow: $shadow-dark;
+    }
+    .titles {
+      display: flex;
+      justify-content: space-between;
+    }
+    .progress {
+      height: 20px;
+      border-radius: 12px;
+      background-color: $medium-color;
+      margin: 1rem 0;
+
+      div {
+        background-color: $primary-color;
+        border-radius: 12px;
+        padding-left: 1rem;
+      }
+    }
+    .buttons {
+      display: flex;
+      width: 50%;
+      margin: 0 auto;
+      justify-content: center;
+      button {
+        @include mx(1);
+      }
+      margin-top: 3rem;
+    }
+  }
+}

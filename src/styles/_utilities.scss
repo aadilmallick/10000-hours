@@ -1,0 +1,99 @@
+@import "Config";
+
+.lead {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 0 2rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 100;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 2rem;
+  transition: all 0.5s;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 18px;
+  &:hover {
+    opacity: 0.8;
+  }
+  &-primary {
+    color: $dark-color;
+    background-color: $primary-color;
+    &:hover {
+      border-radius: 12px;
+    }
+  }
+  &-light {
+    color: $dark-color;
+    background-color: $light-color;
+  }
+  &-dark {
+    color: $light-color;
+    background-color: $dark-color;
+    &:hover {
+      border-radius: 12px;
+    }
+  }
+  &-round {
+    border-radius: 50%;
+  }
+}
+
+.divider {
+  border-bottom: 3px solid $primary-color;
+  width: 10%;
+  margin: 1rem auto;
+}
+
+.spacer {
+  aspect-ratio: 900/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.red-stacked-layer {
+  background-image: url("../../public/images/curves/redlayerwaves.svg");
+}
+
+@mixin py($amount) {
+  padding: $amount * 1rem 0;
+}
+
+@mixin px($amount) {
+  padding: 0 $amount * 1rem;
+}
+
+@mixin padding($amount) {
+  padding: $amount * 1rem;
+}
+
+@mixin my($amount) {
+  margin: $amount * 1rem 0;
+}
+
+@mixin mx($amount) {
+  margin: 0 $amount * 1rem;
+}
+
+@mixin margin($amount) {
+  margin: $amount * 1rem;
+}
