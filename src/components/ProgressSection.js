@@ -1,4 +1,4 @@
-import { AddModal } from "./Utilities";
+import { AddModal, EditModal } from "./Utilities";
 import React, { useState } from "react";
 import { CardContext } from "../context/CardContext";
 
@@ -62,22 +62,35 @@ const Empty = ({ onAdd }) => {
 
 const ProgressCard = ({ title, currentHours, goalHours, id }) => {
   const { deleteCard } = React.useContext(CardContext);
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   return (
-    <div className="card">
-      <div className="titles">
-        <h3 className="card-title">{title}</h3>
-        <h3 className="hours-title">
-          {currentHours}/{goalHours} hrs
-        </h3>
+    <>
+      <EditModal
+        isEditModalOpen={isEditModalOpen}
+        onCloseModal={() => setIsEditModalOpen(false)}
+      />
+      <div className="card">
+        <div className="titles">
+          <h3 className="card-title">{title}</h3>
+          <h3 className="hours-title">
+            {currentHours}/{goalHours} hrs
+          </h3>
+        </div>
+        <ProgressBar currentHours={currentHours} goalHours={goalHours} />
+        <div className="buttons">
+          <button
+            className="btn btn-primary"
+            onClick={() => setIsEditModalOpen(true)}
+          >
+            Edit
+          </button>
+          <button className="btn btn-dark" onClick={() => deleteCard(id)}>
+            Delete
+          </button>
+        </div>
       </div>
-      <ProgressBar currentHours={currentHours} goalHours={goalHours} />
-      <div className="buttons">
-        <button className="btn btn-primary">Edit</button>
-        <button className="btn btn-dark" onClick={() => deleteCard(id)}>
-          Delete
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 

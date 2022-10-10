@@ -173,19 +173,20 @@ img {
     z-index: 999; // must add high z-index to overlay everything else.
     background-color: rgba($color: #000000, $alpha: 0.6);
   }
+  .exit-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition: color 0.5s;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  h1 {
+    text-align: center;
+  }
+
   &.add-modal {
-    .exit-icon {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      transition: color 0.5s;
-      &:hover {
-        color: $primary-color;
-      }
-    }
-    h1 {
-      text-align: center;
-    }
     form {
       margin-top: 3rem;
     }
@@ -198,5 +199,8 @@ img {
         font-size: 18px;
       }
     }
+  }
+
+  &.edit-modal {
   }
 }

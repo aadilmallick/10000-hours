@@ -101,4 +101,31 @@ const AddModal = ({ isOpen, onCloseModal }) => {
   );
 };
 
-export { RedUpLayerCurve, AddModal };
+const EditStuff = ({ onCloseModal }) => {
+  return (
+    <>
+      <div className="modal-overlay"></div>
+      <div className="modal edit-modal">
+        <h1>Edit Journey</h1>
+        <i className="fas fa-times exit-icon" onClick={onCloseModal}></i>
+      </div>
+    </>
+  );
+};
+
+const EditModal = ({ isEditModalOpen, onCloseModal }) => {
+  if (!isEditModalOpen) {
+    return null;
+  }
+
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <EditStuff onCloseModal={onCloseModal} />,
+        document.querySelector("#overlay-root")
+      )}
+    </>
+  );
+};
+
+export { RedUpLayerCurve, AddModal, EditModal };

@@ -240,16 +240,16 @@ img {
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.modal.add-modal .exit-icon {
+.modal .exit-icon {
   position: absolute;
   top: 1rem;
   right: 1rem;
   transition: color 0.5s;
 }
-.modal.add-modal .exit-icon:hover {
+.modal .exit-icon:hover {
   color: #e52a2a;
 }
-.modal.add-modal h1 {
+.modal h1 {
   text-align: center;
 }
 .modal.add-modal form {
