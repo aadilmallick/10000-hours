@@ -1,14 +1,17 @@
 import "./styles/App.css";
 import { HomeScreen } from "./pages/HomeScreen";
+import { CardContext, CardContextProvider } from "./context/CardContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-        </Routes>
+        <CardContextProvider>
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+          </Routes>
+        </CardContextProvider>
       </BrowserRouter>
     </>
   );

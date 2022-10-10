@@ -1,17 +1,6 @@
 import { AddModal } from "./Utilities";
-import { useState } from "react";
-
-const url = "https://hours-896df-default-rtdb.firebaseio.com/";
-
-const addCardHandler = (title, currentHours, goalHours) => {
-  fetch(`${url}.json`, {
-    method: "POST",
-    body: JSON.stringify({ title, currentHours, goalHours }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
+import React, { useState } from "react";
+import { CardContext } from "../context/CardContext";
 
 const ProgressSection = () => {
   // const cards = [
@@ -19,9 +8,13 @@ const ProgressSection = () => {
   //   { title: "Spanish", currentHours: 450, goalHours: 700, id: 1 },
   // ];
 
-  const cards = [];
+  const { cards, deleteCard } = React.useContext(CardContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let isempty = cards.length === 0;
+
+  const onAdd = () => {
+    setModalIsOpen(true);
+  };
   return (
     <section id="home-a">
       <AddModal
@@ -32,16 +25,24 @@ const ProgressSection = () => {
         <h2 className="section-title">My Journies</h2>
         <div className="divider"></div>
         {isempty ? (
-          <Empty onAdd={() => setModalIsOpen(true)} />
+          <Empty onAdd={onAdd} />
         ) : (
           cards.map((card) => (
             <ProgressCard
               title={card.title}
               currentHours={card.currentHours}
               goalHours={card.goalHours}
+              id={card.id}
               key={card.id}
             />
           ))
+        )}
+        {!isempty && (
+          <div className="empty">
+            <button className="btn btn-primary" onClick={onAdd}>
+              Add journey
+            </button>
+          </div>
         )}
       </div>
     </section>
@@ -59,8 +60,8 @@ const Empty = ({ onAdd }) => {
   );
 };
 
-const ProgressCard = ({ title, currentHours, goalHours }) => {
-  console.log(currentHours / goalHours);
+const ProgressCard = ({ title, currentHours, goalHours, id }) => {
+  const { deleteCard } = React.useContext(CardContext);
   return (
     <div className="card">
       <div className="titles">
@@ -69,17 +70,26 @@ const ProgressCard = ({ title, currentHours, goalHours }) => {
           {currentHours}/{goalHours} hrs
         </h3>
       </div>
-      <div className="progress">
-        <div style={{ width: "65%" }}>
-          {Math.floor((currentHours / goalHours) * 100)}%
-        </div>
-      </div>
+      <ProgressBar currentHours={currentHours} goalHours={goalHours} />
       <div className="buttons">
         <button className="btn btn-primary">Edit</button>
-        <button className="btn btn-dark">Delete</button>
+        <button className="btn btn-dark" onClick={() => deleteCard(id)}>
+          Delete
+        </button>
       </div>
     </div>
   );
 };
 
+const ProgressBar = ({ currentHours, goalHours }) => {
+  return (
+    <div className="progress">
+      <div
+        style={{ width: `${Math.floor((currentHours / goalHours) * 100)}%` }}
+      >
+        {Math.floor((currentHours / goalHours) * 100)}%
+      </div>
+    </div>
+  );
+};
 export { ProgressSection };

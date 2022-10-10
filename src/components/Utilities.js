@@ -1,33 +1,62 @@
 import React from "react";
+import { useState } from "react";
 import ReactDOM from "react-dom";
+import { CardContext } from "../context/CardContext";
+import { v4 as uuidv4 } from "uuid";
 
 const RedUpLayerCurve = () => {
   return <div className="spacer red-stacked-layer"></div>;
 };
 
-const AddShit = ({ onCloseModal }) => {
-  const onSubmitHandler = (e) => {};
+const AddStuff = ({ onCloseModal }) => {
+  const { addCard } = React.useContext(CardContext);
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const { title, goalHours, initHours } = formstate;
+    addCard({ title, goalHours, currentHours: initHours, id: uuidv4() });
+  };
+
+  const [formstate, setFormstate] = React.useState({
+    title: "",
+    initHours: 0,
+    goalHours: 10000,
+  });
+
   return (
     <>
       <div className="modal-overlay"></div>
       <div className="modal add-modal">
         <h1>Add Journey</h1>
         <i className="fas fa-times exit-icon" onClick={onCloseModal}></i>
-        <form>
+        <form onSubmit={submitHandler}>
           <div>
             <label>Journey Title</label>
-            <input type="text" placeholder="Title" required></input>
+            <input
+              type="text"
+              placeholder="Title"
+              required
+              value={formstate.title}
+              onChange={(e) =>
+                setFormstate({ ...formstate, title: e.target.value })
+              }
+            ></input>
           </div>
           <div>
             <label>Initial Hours</label>
             <input
               type="number"
               placeholder="initial hours"
-              defaultValue={0}
               required
               min="0"
               max="10000"
               step={100}
+              value={formstate.initHours}
+              onChange={(e) =>
+                setFormstate({
+                  ...formstate,
+                  initHours: Number(e.target.value),
+                })
+              }
             ></input>
           </div>
           <div>
@@ -36,10 +65,16 @@ const AddShit = ({ onCloseModal }) => {
               type="number"
               required
               placeholder="goal hours"
-              defaultValue={10000}
               min="0"
               max="10000"
               step={100}
+              value={formstate.goalHours}
+              onChange={(e) =>
+                setFormstate({
+                  ...formstate,
+                  goalHours: Number(e.target.value),
+                })
+              }
             ></input>
           </div>
           <input type="submit" className="btn btn-block btn-primary"></input>
@@ -59,7 +94,7 @@ const AddModal = ({ isOpen, onCloseModal }) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <AddShit onCloseModal={onCloseModal} />,
+        <AddStuff onCloseModal={onCloseModal} />,
         document.querySelector("#overlay-root")
       )}
     </>
