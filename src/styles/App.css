@@ -53,6 +53,9 @@
 .btn-round {
   border-radius: 50%;
 }
+.btn-block {
+  width: 100%;
+}
 
 .divider {
   border-bottom: 3px solid #e52a2a;
@@ -233,4 +236,28 @@ img {
   bottom: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.6);
+}
+.modal.add-modal .exit-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transition: color 0.5s;
+}
+.modal.add-modal .exit-icon:hover {
+  color: #e52a2a;
+}
+.modal.add-modal h1 {
+  text-align: center;
+}
+.modal.add-modal form {
+  margin-top: 3rem;
+}
+.modal.add-modal div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.modal.add-modal div input {
+  padding: 0.2rem;
+  font-size: 18px;
 }/*# sourceMappingURL=App.css.map */

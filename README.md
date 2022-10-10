@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# 10,000 hours project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a project that I wanted to create to keep track of my progress of goals over time. I didn't really see anything else like this online (there are only habit trackers), so I decided to make my own simple tool version of this. I really like having a visual confirmation of my progress in my dreams and goals rather than just changing the number in a bland text document.
 
-## Available Scripts
+This code is based primarily on React and is a way for me to get back into using React. I primarily chose react because this is a highly interactive UI project that includes javascript for modals, adding cards, etc. Using server-side rendering for node would require separate pages for everything and would require a lot more bulky vanilla javascript to make actually good. I love Node, but I feel a JavaScript intense project like this where the user can edit their goals without leaving the page requires a framework like React. Hence why I chose it.
 
-In the project directory, you can run:
+## Step 1: Figma Design
 
-### `npm start`
+![](2022-10-09-23-24-01.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I created the visualization of my design on Figma. Later I would go on to experiment with SVG curves, for now I was happy with my minimalist design. I used my knowledge of web design to create this.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- To speed up page loading times, I optimized my images and decreased their file sizes.
 
-### `npm test`
+## Step 2: creating the UI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### React Router
 
-### `npm run build`
+Initialize react router in the project in case I want to add more pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Styling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I am using SASS to style my React app because of its DRY implementation. I use the Watch SASS extension to compile my scss code into css, and then I use that single css file to style my entire app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- I use partials to separate my code
+- I use nesting to organize my styles
 
-### `npm run eject`
+### Navbar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The navbar was simple to make, all I did was use flexbox for the styling and create logos and links to fill the navbar.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Progress Section
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I decided to make the progress section a section full of cards, which would each contain a progress bar, the title of the journey, the number of hours, and the edit buttons.
