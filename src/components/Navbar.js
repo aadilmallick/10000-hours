@@ -11,7 +11,7 @@ const Navbar = () => {
       <img
         src="../../images/icons/logo-light.png"
         alt="my portfolio"
-        class="logo"
+        className="logo"
       />
       <ul>
         {linklist.map((link) => (
