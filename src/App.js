@@ -6,6 +6,10 @@ import { AboutScreen } from "./pages/AboutScreen";
 import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 
 function App() {
+  return <AuthStack />;
+}
+
+function AuthStack() {
   return (
     <>
       <AuthContextProvider>

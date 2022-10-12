@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { CardContext } from "../context/CardContext";
 import { v4 as uuidv4 } from "uuid";
 import { postTasks } from "../context/firebase";
+import { AuthContext } from "../context/AuthContext";
 
 const RedUpLayerCurve = () => {
   return <div className="spacer red-stacked-layer"></div>;
@@ -106,6 +107,7 @@ const EditStuff = ({ onCloseModal, cardId }) => {
   const [minutes, setMinutes] = useState(0);
 
   const { editCard } = React.useContext(CardContext);
+  const { user } = React.useContext(AuthContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -113,7 +115,8 @@ const EditStuff = ({ onCloseModal, cardId }) => {
     const hoursWorked = hours;
     const minutesWorked = minutes;
     editCard(cardId, { task, hoursWorked, minutesWorked });
-    postTasks({ task, hoursWorked, id: cardId });
+    console.log(user.email);
+    postTasks({ task, hoursWorked, id: cardId }, user.email);
     onCloseModal();
   };
   return (
