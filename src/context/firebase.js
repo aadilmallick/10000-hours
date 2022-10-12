@@ -68,4 +68,12 @@ async function findCardFromId(id) {
   return { firebaseName: tofind, card: data[tofind] };
 }
 
-export { postCards, fetchCards, updateCard, deleteCards };
+async function postTasks({ task, id, hoursWorked }) {
+  const { card } = await findCardFromId(id);
+  await fetch(`${url}/logs/aadil/${card.title}.json`, {
+    method: "POST",
+    body: JSON.stringify({ task, hoursWorked }),
+  });
+}
+
+export { postCards, fetchCards, updateCard, deleteCards, postTasks };

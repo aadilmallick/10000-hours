@@ -3,6 +3,7 @@ import { useState } from "react";
 import ReactDOM from "react-dom";
 import { CardContext } from "../context/CardContext";
 import { v4 as uuidv4 } from "uuid";
+import { postTasks } from "../context/firebase";
 
 const RedUpLayerCurve = () => {
   return <div className="spacer red-stacked-layer"></div>;
@@ -14,6 +15,7 @@ const AddStuff = ({ onCloseModal }) => {
     event.preventDefault();
     const { title, goalHours, initHours } = formstate;
     addCard({ title, goalHours, currentHours: initHours, id: uuidv4() });
+    onCloseModal();
   };
 
   const [formstate, setFormstate] = React.useState({
@@ -111,6 +113,8 @@ const EditStuff = ({ onCloseModal, cardId }) => {
     const hoursWorked = hours;
     const minutesWorked = minutes;
     editCard(cardId, { task, hoursWorked, minutesWorked });
+    postTasks({ task, hoursWorked, id: cardId });
+    onCloseModal();
   };
   return (
     <>
