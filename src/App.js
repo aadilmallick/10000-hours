@@ -1,7 +1,8 @@
 import "./styles/App.css";
 import { HomeScreen } from "./pages/HomeScreen";
-import { CardContext, CardContextProvider } from "./context/CardContext";
+import { CardContextProvider } from "./context/CardContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AboutScreen } from "./pages/AboutScreen";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <CardContextProvider>
           <Routes>
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/about" element={<AboutScreen />} />
           </Routes>
         </CardContextProvider>
       </BrowserRouter>

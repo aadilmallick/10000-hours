@@ -20,7 +20,7 @@
   font-weight: 100;
 }
 
-.btn {
+.btn, .modal.edit-modal input[type=submit] {
   display: inline-block;
   padding: 0.6rem 2rem;
   transition: all 0.5s;
@@ -29,7 +29,7 @@
   border-radius: 6px;
   font-size: 18px;
 }
-.btn:hover {
+.btn:hover, .modal.edit-modal input[type=submit]:hover {
   opacity: 0.8;
 }
 .btn-primary {
@@ -73,6 +73,21 @@
 
 .red-stacked-layer {
   background-image: url("../../public/images/curves/redlayerwaves.svg");
+}
+
+.display-text {
+  font-family: "Poppins";
+  font-weight: 100;
+  font-size: 1.5rem;
+}
+
+.line-input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #333;
+}
+.line-input:focus-visible {
+  outline: 0;
 }
 
 * {
@@ -119,7 +134,7 @@ img {
   z-index: 1;
   bottom: 0;
   left: 0;
-  opacity: 0.9;
+  opacity: 0.98;
 }
 #header-home .logo {
   width: 70px;
@@ -263,4 +278,34 @@ img {
 .modal.add-modal div input {
   padding: 0.2rem;
   font-size: 18px;
+}
+.modal.edit-modal input {
+  padding: 0.2rem;
+  font-size: 18px;
+  text-align: center;
+}
+.modal.edit-modal .task-name {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #333;
+  font-size: 2rem;
+  margin: 1rem 0;
+  width: 50%;
+  font-family: "Poppins";
+  font-weight: 100;
+}
+.modal.edit-modal .task-name:focus-visible {
+  outline: 0;
+}
+.modal.edit-modal .hours-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 50%;
+  margin: 0 auto;
+  align-items: center;
+  row-gap: 0.5rem;
+}
+.modal.edit-modal input[type=submit] {
+  margin-top: 2rem;
+  margin-bottom: -1rem;
 }/*# sourceMappingURL=App.css.map */

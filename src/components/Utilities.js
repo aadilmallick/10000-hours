@@ -79,9 +79,6 @@ const AddStuff = ({ onCloseModal }) => {
           </div>
           <input type="submit" className="btn btn-block btn-primary"></input>
         </form>
-        {/* <button onClick={onCloseModal} className="btn btn-block btn-dark">
-          close me
-        </button> */}
       </div>
     </>
   );
@@ -101,19 +98,65 @@ const AddModal = ({ isOpen, onCloseModal }) => {
   );
 };
 
-const EditStuff = ({ onCloseModal }) => {
+const EditStuff = ({ onCloseModal, cardId }) => {
+  const [taskName, setTaskName] = useState("");
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+
+  const { editCard } = React.useContext(CardContext);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const task = taskName;
+    const hoursWorked = hours;
+    const minutesWorked = minutes;
+    editCard(cardId, { task, hoursWorked, minutesWorked });
+  };
   return (
     <>
       <div className="modal-overlay"></div>
-      <div className="modal edit-modal">
-        <h1>Edit Journey</h1>
+      <div className="modal edit-modal text-center">
         <i className="fas fa-times exit-icon" onClick={onCloseModal}></i>
+        <h1>Add Hours</h1>
+        <form onSubmit={submitHandler}>
+          <input
+            type="text"
+            placeholder="task name"
+            className="task-name"
+            required
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+          />
+          <div className="hours-container">
+            <label>Hours</label>
+            <input
+              type="number"
+              className="hours-input"
+              required
+              min="0"
+              max="20"
+              value={hours}
+              onChange={(e) => setHours(Number(e.target.value))}
+            />
+            <label>minutes</label>
+            <input
+              type="number"
+              className="minutes-input"
+              required
+              min="0"
+              max="59"
+              value={minutes}
+              onChange={(e) => setMinutes(Number(e.target.value))}
+            />
+          </div>
+          <input type="submit" className="btn btn-primary btn-block" />
+        </form>
       </div>
     </>
   );
 };
 
-const EditModal = ({ isEditModalOpen, onCloseModal }) => {
+const EditModal = ({ isEditModalOpen, onCloseModal, cardId }) => {
   if (!isEditModalOpen) {
     return null;
   }
@@ -121,7 +164,7 @@ const EditModal = ({ isEditModalOpen, onCloseModal }) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <EditStuff onCloseModal={onCloseModal} />,
+        <EditStuff onCloseModal={onCloseModal} cardId={cardId} />,
         document.querySelector("#overlay-root")
       )}
     </>

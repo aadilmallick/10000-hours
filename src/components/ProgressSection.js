@@ -69,6 +69,7 @@ const ProgressCard = ({ title, currentHours, goalHours, id }) => {
       <EditModal
         isEditModalOpen={isEditModalOpen}
         onCloseModal={() => setIsEditModalOpen(false)}
+        cardId={id}
       />
       <div className="card">
         <div className="titles">

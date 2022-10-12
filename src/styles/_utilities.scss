@@ -100,3 +100,18 @@
 @mixin margin($amount) {
   margin: $amount * 1rem;
 }
+
+.display-text {
+  font-family: "Poppins";
+  font-weight: 100;
+  font-size: 1.5rem;
+}
+
+.line-input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid $dark-color;
+  &:focus-visible {
+    outline: 0;
+  }
+}
