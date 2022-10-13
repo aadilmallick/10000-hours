@@ -1,6 +1,7 @@
 import { AddModal, EditModal } from "./Utilities";
 import React, { useState } from "react";
 import { CardContext } from "../context/CardContext";
+import { AuthContext } from "../context/AuthContext";
 
 const ProgressSection = () => {
   // const cards = [

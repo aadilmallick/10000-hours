@@ -116,7 +116,14 @@ const EditStuff = ({ onCloseModal, cardId }) => {
     const minutesWorked = minutes;
     editCard(cardId, { task, hoursWorked, minutesWorked });
     console.log(user.email);
-    postTasks({ task, hoursWorked, id: cardId }, user.email);
+    postTasks(
+      {
+        task,
+        hoursWorked: hoursWorked + Number((minutesWorked / 60).toFixed(1)),
+        id: cardId,
+      },
+      user.email
+    );
     onCloseModal();
   };
   return (

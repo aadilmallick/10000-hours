@@ -4,7 +4,6 @@ const Navbar = () => {
   const linklist = [
     { url: "/", text: "home" },
     { url: "/about", text: "about" },
-    { url: "/howto", text: "how-to" },
   ];
   return (
     <nav id="main-nav">

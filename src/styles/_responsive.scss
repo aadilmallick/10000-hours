@@ -1,0 +1,36 @@
+@import "Config";
+@import "utilities";
+
+@media (max-width: 800px) {
+  #header-home {
+    .header-content {
+      padding-top: 50%;
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+  #main-nav {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+}
+
+@media (max-height: 580px) {
+  #header-home {
+    .header-content {
+      padding-top: 1rem;
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+}

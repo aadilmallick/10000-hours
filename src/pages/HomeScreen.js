@@ -24,13 +24,14 @@ const HomeScreen = () => {
 const HeaderContent = () => {
   const { user, login, logout } = useContext(AuthContext);
   console.log(user);
-  const handleCredentialResponse = (response) => {
-    console.log("Encoded JWT ID token: " + response.credential);
-    const { email, name, picture } = jwtDecode(response.credential);
-    login({ email, name, picture });
-  };
+
   useEffect(() => {
     /* global google */
+    const handleCredentialResponse = (response) => {
+      const { email, name, picture } = jwtDecode(response.credential);
+      login({ email, name, picture });
+    };
+
     google.accounts.id.initialize({
       client_id: process.env.REACT_APP_CLIENT_ID,
       callback: handleCredentialResponse,
@@ -49,13 +50,15 @@ const HeaderContent = () => {
       <div className="header-content text-center">
         <h1>10000 HOURS</h1>
         <h2>Starts Here</h2>
-        {user ? (
-          <button className="btn btn-dark" onClick={logout}>
-            logout
-          </button>
-        ) : (
-          <div id="buttonDiv"></div>
-        )}
+
+        <button
+          className={user ? "btn btn-dark" : "display-none btn btn-dark"}
+          onClick={logout}
+        >
+          logout
+        </button>
+
+        <div id="buttonDiv"></div>
       </div>
     </>
   );
