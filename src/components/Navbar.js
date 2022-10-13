@@ -7,23 +7,25 @@ const Navbar = ({ onAbout }) => {
   ];
   if (onAbout) {
     return (
-      <nav id="about-nav">
-        <img
-          src="../../images/icons/logo-light.png"
-          alt="my portfolio"
-          className="navbar-logo"
-        />
-        <ul>
-          {linklist.map((link) => (
-            <Navlink
-              url={link.url}
-              text={link.text}
-              key={link.url}
-              current={link.url === "/about"}
-            />
-          ))}
-        </ul>
-      </nav>
+      <div className="container">
+        <nav id="about-nav">
+          <img
+            src="../../images/icons/logo-light.png"
+            alt="my portfolio"
+            className="navbar-logo"
+          />
+          <ul>
+            {linklist.map((link) => (
+              <Navlink
+                url={link.url}
+                text={link.text}
+                key={link.url}
+                current={link.url === "/about"}
+              />
+            ))}
+          </ul>
+        </nav>
+      </div>
     );
   }
 

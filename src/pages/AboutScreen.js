@@ -5,8 +5,13 @@ import land from "./aboutscreenimages/land.png";
 import cat from "./aboutscreenimages/cat.gif";
 import demo from "./aboutscreenimages/demovideo.mp4";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 const AboutScreen = () => {
-  return <ParallaxSection withNavbar={true} />;
+  return (
+    <>
+      <ParallaxSection withNavbar={true} />
+    </>
+  );
 };
 
 const ParallaxSection = ({ withNavbar }) => {

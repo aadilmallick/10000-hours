@@ -52,7 +52,6 @@ const AddStuff = ({ onCloseModal }) => {
               required
               min="0"
               max="10000"
-              step={100}
               value={formstate.initHours}
               onChange={(e) =>
                 setFormstate({
@@ -70,7 +69,6 @@ const AddStuff = ({ onCloseModal }) => {
               placeholder="goal hours"
               min="0"
               max="10000"
-              step={100}
               value={formstate.goalHours}
               onChange={(e) =>
                 setFormstate({

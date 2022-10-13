@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
+import { Footer } from "../components/Footer";
 
 const HomeScreen = () => {
   const { user, login, logout } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const HomeScreen = () => {
         <div className="spacer red-stacked-layer"></div>
       </header>
       {user && <ProgressSection />}
+      <Footer />
     </>
   );
 };

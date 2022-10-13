@@ -237,4 +237,44 @@ img {
   }
 }
 
+#main-footer {
+  background-color: $dark-color;
+  color: white;
+  height: 5rem;
+  @include py(2);
+
+  .footer-content {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .links {
+    a {
+      @include mx(2);
+      color: white;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+  .social {
+    i {
+      margin-right: 1rem;
+      border: 2px solid white;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      line-height: 20px;
+      text-align: center;
+      padding: 0.5rem;
+      transition: all 1s;
+      &:hover {
+        background-color: $primary-color;
+        color: $dark-color;
+      }
+    }
+  }
+}
+
 @import "responsive";

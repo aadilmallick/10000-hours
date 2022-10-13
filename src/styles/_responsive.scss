@@ -19,6 +19,12 @@
 }
 
 @media (max-width: 500px) {
+  #main-footer {
+    height: 10rem;
+    .footer-content {
+      flex-direction: column;
+    }
+  }
 }
 
 @media (max-height: 580px) {
