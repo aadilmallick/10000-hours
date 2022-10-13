@@ -102,7 +102,7 @@ const ProgressBar = ({ currentHours, goalHours }) => {
       <div
         style={{ width: `${Math.floor((currentHours / goalHours) * 100)}%` }}
       >
-        {Math.floor((currentHours / goalHours) * 100)}%
+        {Number(((currentHours / goalHours) * 100).toFixed(2))}%
       </div>
     </div>
   );
