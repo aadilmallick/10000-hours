@@ -7,6 +7,7 @@ import jwtDecode from "jwt-decode";
 
 const HomeScreen = () => {
   const { user, login, logout } = useContext(AuthContext);
+  console.log("user", user);
   return (
     <>
       <header id="header-home">

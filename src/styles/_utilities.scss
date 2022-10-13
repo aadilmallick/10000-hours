@@ -77,6 +77,23 @@
   background-image: url("../../public/images/curves/redlayerwaves.svg");
 }
 
+@mixin down-a-bit($amount) {
+  position: relative;
+  top: $amount * 1rem;
+}
+
+.down-a-bit {
+  &-3 {
+    @include down-a-bit(3);
+  }
+  &-4 {
+    @include down-a-bit(4);
+  }
+  &-5 {
+    @include down-a-bit(5);
+  }
+}
+
 @mixin py($amount) {
   padding: $amount * 1rem 0;
 }

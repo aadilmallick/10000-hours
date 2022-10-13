@@ -1,10 +1,32 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ onAbout }) => {
   const linklist = [
     { url: "/", text: "home" },
     { url: "/about", text: "about" },
   ];
+  if (onAbout) {
+    return (
+      <nav id="about-nav">
+        <img
+          src="../../images/icons/logo-light.png"
+          alt="my portfolio"
+          className="navbar-logo"
+        />
+        <ul>
+          {linklist.map((link) => (
+            <Navlink
+              url={link.url}
+              text={link.text}
+              key={link.url}
+              current={link.url === "/about"}
+            />
+          ))}
+        </ul>
+      </nav>
+    );
+  }
+
   return (
     <nav id="main-nav">
       <img

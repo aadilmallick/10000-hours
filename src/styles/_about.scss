@@ -1,0 +1,97 @@
+@import "Config";
+
+.parallax {
+  background-color: black;
+  .sticky-layer {
+    z-index: 5;
+  }
+  .video-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    video {
+      width: 100%;
+    }
+  }
+  .end-layer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .gif {
+    width: 20%;
+    min-width: 300px;
+    opacity: 0.9;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 400;
+    color: white;
+    font-size: 10vw;
+    text-shadow: -0.04em 0.04em 0 #000, 0.04em 0.04em 0 #000,
+      0.04em -0.04em 0 #000, -0.04em -0.04em 0 #000;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  .light-heading {
+    text-align: center;
+    font-weight: 400;
+    color: white;
+    font-size: 5vw;
+    text-shadow: -0.04em 0.04em 0 #000, 0.04em 0.04em 0 #000,
+      0.04em -0.04em 0 #000, -0.04em -0.04em 0 #000;
+  }
+  .info {
+    background-color: $light-color;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0.7;
+    max-width: 700px;
+    margin: 1rem auto;
+    .info-content {
+      margin: 1rem;
+
+      p {
+        color: $dark-color;
+        width: 30%;
+        margin: 0 auto;
+      }
+      .icon-container {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-around;
+        i {
+          border: 2px solid $primary-color;
+          padding: 1rem;
+          border-radius: 50%;
+          animation: glow-red 4s infinite alternate;
+        }
+        @keyframes glow-red {
+          0% {
+            background-color: transparent;
+          }
+          50% {
+            background-color: $primary-color;
+            color: white;
+          }
+          100% {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+#about-nav {
+  @extend #main-nav;
+  background-color: transparent;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .navbar-logo {
+    width: 70px;
+  }
+}
