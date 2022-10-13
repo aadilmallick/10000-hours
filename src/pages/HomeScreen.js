@@ -28,8 +28,8 @@ const HeaderContent = () => {
   useEffect(() => {
     /* global google */
     const handleCredentialResponse = (response) => {
-      const { email, name, picture } = jwtDecode(response.credential);
-      login({ email, name, picture });
+      const { email, name, picture } = jwtDecode(response.credential); // decode jwt token
+      login({ email, name, picture }); // login: set user, hide login button
     };
 
     google.accounts.id.initialize({
@@ -37,10 +37,10 @@ const HeaderContent = () => {
       callback: handleCredentialResponse,
     });
     if (!user) {
-      google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
-        { theme: "outline", size: "large" } // customization attributes
-      );
+      google.accounts.id.renderButton(document.getElementById("buttonDiv"), {
+        theme: "outline",
+        size: "large",
+      });
       google.accounts.id.prompt(); // also display the One Tap dialog
     }
   }, [user]);
