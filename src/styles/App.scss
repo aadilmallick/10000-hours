@@ -134,13 +134,15 @@ img {
       border-radius: 12px;
       background-color: $medium-color;
       margin: 1rem 0;
-      padding-left: 1rem;
       display: flex;
       align-items: center;
       border: 2px dotted $primary-color;
       div {
         background-color: $primary-color;
         border-radius: 12px;
+        p {
+          padding-left: 12px;
+        }
       }
     }
     .buttons {

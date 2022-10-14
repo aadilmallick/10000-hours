@@ -336,7 +336,6 @@ img {
   border-radius: 12px;
   background-color: #d9d9d9;
   margin: 1rem 0;
-  padding-left: 1rem;
   display: flex;
   align-items: center;
   border: 2px dotted #e52a2a;
@@ -344,6 +343,9 @@ img {
 #home-a .card .progress div {
   background-color: #e52a2a;
   border-radius: 12px;
+}
+#home-a .card .progress div p {
+  padding-left: 12px;
 }
 #home-a .card .buttons {
   display: flex;

@@ -76,7 +76,7 @@ const ProgressCard = ({ title, currentHours, goalHours, id }) => {
         <div className="titles">
           <h3 className="card-title">{title}</h3>
           <h3 className="hours-title">
-            {Number(currentHours).toFixed(2)}/{goalHours} hrs
+            {Number(currentHours).toFixed(1)}/{goalHours} hrs
           </h3>
         </div>
         <ProgressBar currentHours={currentHours} goalHours={goalHours} />
@@ -102,7 +102,7 @@ const ProgressBar = ({ currentHours, goalHours }) => {
       <div
         style={{ width: `${Math.floor((currentHours / goalHours) * 100)}%` }}
       >
-        {Number(((currentHours / goalHours) * 100).toFixed(2))}%
+        <p>{Number(((currentHours / goalHours) * 100).toFixed(2))}%</p>
       </div>
     </div>
   );
