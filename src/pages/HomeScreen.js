@@ -5,9 +5,11 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
 import { Footer } from "../components/Footer";
+import { GoogleLogin } from "@react-oauth/google";
+import { googleLogout } from "@react-oauth/google";
 
 const HomeScreen = () => {
-  const { user, login, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <>
       <header id="header-home">
@@ -23,45 +25,51 @@ const HomeScreen = () => {
   );
 };
 
-const HeaderContent = () => {
-  const { user, login, logout } = useContext(AuthContext);
+const LogoutButton = () => {
+  const { logout } = useContext(AuthContext);
+  return (
+    <button
+      className="btn btn-dark"
+      onClick={() => {
+        logout();
+        googleLogout();
+      }}
+    >
+      logout
+    </button>
+  );
+};
 
-  useEffect(() => {
-    /* global google */
-    const handleCredentialResponse = (response) => {
-      const { email, name, picture } = jwtDecode(response.credential); // decode jwt token
-      login({ email, name, picture }); // login: set user, hide login button
-    };
-    google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_CLIENT_ID,
-      callback: handleCredentialResponse,
-    });
-    if (!user) {
-      google.accounts.id.renderButton(document.getElementById("buttonDiv"), {
-        theme: "outline",
-        size: "large",
-      });
-      google.accounts.id.prompt(); // also display the One Tap dialog
-    }
-  }, [user]);
+const LoginButton = () => {
+  const { login } = useContext(AuthContext);
+  return (
+    <GoogleLogin
+      onSuccess={(credentialResponse) => {
+        console.log(credentialResponse);
+        const token = jwtDecode(credentialResponse.credential);
+        const { email, name, picture } = token;
+        login({ email, name, picture });
+      }}
+      onError={() => {
+        console.log("Login Failed");
+      }}
+      useOneTap
+      auto_select
+    />
+  );
+};
+
+const HeaderContent = () => {
+  const { user } = useContext(AuthContext);
 
   return (
     <>
       <div className="header-content text-center">
         <h1>10000 HOURS</h1>
         <h2>Starts Here</h2>
-
-        <button
-          className={user ? "btn btn-dark" : "display-none btn btn-dark"}
-          onClick={logout}
-        >
-          logout
-        </button>
-
-        <div id="buttonDiv"></div>
+        {user ? <LogoutButton /> : <LoginButton />}
       </div>
     </>
   );
 };
-
 export { HomeScreen };
