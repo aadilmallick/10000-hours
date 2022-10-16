@@ -8,7 +8,6 @@ import { Footer } from "../components/Footer";
 
 const HomeScreen = () => {
   const { user, login, logout } = useContext(AuthContext);
-  console.log("user", user);
   return (
     <>
       <header id="header-home">
@@ -26,7 +25,6 @@ const HomeScreen = () => {
 
 const HeaderContent = () => {
   const { user, login, logout } = useContext(AuthContext);
-  console.log(user);
 
   useEffect(() => {
     /* global google */
@@ -34,7 +32,6 @@ const HeaderContent = () => {
       const { email, name, picture } = jwtDecode(response.credential); // decode jwt token
       login({ email, name, picture }); // login: set user, hide login button
     };
-
     google.accounts.id.initialize({
       client_id: process.env.REACT_APP_CLIENT_ID,
       callback: handleCredentialResponse,

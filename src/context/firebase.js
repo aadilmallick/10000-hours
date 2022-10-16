@@ -15,7 +15,6 @@ const postCards = ({ currentHours, goalHours, title, id }, email) => {
 const fetchCards = async (email) => {
   const response = await fetch(`${url}/goals/${email}.json`);
   const data = await response.json();
-  console.log(data);
   const temp = [];
   for (const key in data) {
     temp.push(data[key]);
